@@ -1,0 +1,163 @@
+:root{
+  --teal:#2A9D8F; --teal-d:#1F7A70; --teal-l:#E8F6F4;
+  --ink:#1B2A2E; --mute:#64767B; --line:#E2E9E9; --bg:#F7FAFA; --card:#FFFFFF;
+  --warn:#C2410C;
+  --lime:#7FBF7A; --lime-d:#4E8C4A;   /* 40기 구분색 */
+  --w: 1280px;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:15px; line-height:1.72; word-break:keep-all; overflow-wrap:anywhere;
+}
+a{color:var(--teal-d);}
+
+/* ── 헤더 ───────────────────────────── */
+header{
+  position:sticky; top:0; z-index:20; background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid var(--line);
+}
+.hwrap{max-width:var(--w); margin:0 auto; padding:12px 16px;
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+.brand{font-weight:800; font-size:15px; letter-spacing:-.3px; white-space:nowrap;}
+.brand span{color:var(--teal); }
+.mode{font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:999px;
+  background:var(--teal-l); color:var(--teal-d); white-space:nowrap;}
+.mode.admin{background:#FFF1E6; color:var(--warn);}
+.status{margin-left:auto; font-size:12.5px; color:var(--mute); white-space:nowrap;}
+
+nav{max-width:var(--w); margin:0 auto; padding:0 16px 10px;
+  display:flex; gap:6px; overflow-x:auto; scrollbar-width:thin;}
+nav button{
+  flex:0 0 auto; border:1px solid var(--line); background:#fff; color:var(--mute);
+  padding:7px 14px; border-radius:999px; font:inherit; font-size:13.5px;
+  font-weight:600; cursor:pointer; white-space:nowrap;
+}
+nav button[aria-current="true"]{background:var(--teal); border-color:var(--teal); color:#fff;}
+
+/* ── 본문 ───────────────────────────── */
+main{max-width:var(--w); margin:0 auto; padding:22px 16px 80px;}
+.person-head{margin:4px 0 22px;}
+.person-head h1{font-size:23px; margin:0 0 6px; letter-spacing:-.6px;}
+.person-head h1 small{font-size:13px; font-weight:600; color:var(--mute); margin-left:8px;}
+.person-head p{margin:0; color:var(--mute); font-size:14px;}
+
+.slide{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  margin-bottom:18px; overflow:hidden; scroll-margin-top:110px;
+}
+.slide-no{
+  display:flex; align-items:center; gap:9px; padding:11px 16px;
+  border-bottom:1px solid var(--line); background:#FBFDFD;
+}
+.slide-no b{
+  min-width:24px; height:24px; border-radius:6px; background:var(--teal);
+  color:#fff; font-size:12px; display:grid; place-items:center;
+}
+.slide-no span{font-size:13.5px; color:var(--mute); font-weight:600;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.grid{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+.pane-img{padding:16px; border-right:1px solid var(--line); background:#fff;}
+.pane-img img{width:100%; height:auto; display:block; border:1px solid var(--line);
+  border-radius:6px; cursor:zoom-in;}
+.pane-txt{padding:16px 18px; display:flex; flex-direction:column; gap:14px; min-width:0;}
+
+.sec-label{font-size:11.5px; font-weight:800; letter-spacing:.4px;
+  color:var(--teal-d); text-transform:uppercase;}
+.script p{margin:0 0 9px; font-size:14.5px;}
+.script p:last-child{margin-bottom:0;}
+.script .none{color:var(--mute); font-style:italic;}
+
+.fb{border-top:1px dashed var(--line); padding-top:13px;}
+.fb textarea{
+  width:100%; min-height:92px; resize:vertical; padding:10px 12px;
+  border:1px solid var(--line); border-radius:8px; font:inherit; font-size:14px;
+  line-height:1.65; background:#FEFFFE; color:var(--ink);
+}
+.fb textarea:focus{outline:2px solid var(--teal); outline-offset:-1px; border-color:var(--teal);}
+.fb .row{display:flex; align-items:center; gap:10px; margin-top:7px;}
+.fb .saved{font-size:12px; color:var(--mute);}
+.fb button{
+  border:1px solid var(--line); background:#fff; color:var(--mute);
+  padding:4px 11px; border-radius:7px; font:inherit; font-size:12.5px; cursor:pointer;
+}
+.fb button:hover{border-color:var(--warn); color:var(--warn);}
+.fb .read{
+  background:var(--teal-l); border-left:3px solid var(--teal); border-radius:0 8px 8px 0;
+  padding:11px 13px; font-size:14px; white-space:pre-wrap;
+}
+.fb .empty{color:var(--mute); font-size:13.5px;}
+
+.overall{
+  background:var(--card); border:2px solid var(--teal); border-radius:12px;
+  padding:20px; margin-top:28px; scroll-margin-top:110px;
+}
+.overall h2{margin:0 0 4px; font-size:18px;}
+.overall .hint{margin:0 0 14px; color:var(--mute); font-size:13.5px;}
+.overall textarea{min-height:170px;}
+
+/* 이미지 확대 */
+dialog{border:none; padding:0; background:transparent; max-width:96vw; max-height:96vh;}
+dialog::backdrop{background:rgba(10,20,22,.86);}
+dialog img{max-width:96vw; max-height:96vh; display:block; border-radius:6px;}
+
+.note{
+  max-width:var(--w); margin:0 auto 18px; padding:12px 15px;
+  background:#FFF8F0; border:1px solid #F3DCC4; border-radius:10px;
+  font-size:13.5px; color:#8A5A28;
+}
+
+@media (max-width:860px){
+  .grid{grid-template-columns:1fr;}
+  .pane-img{border-right:none; border-bottom:1px solid var(--line);}
+  .person-head h1{font-size:20px;}
+}
+
+/* 비밀번호 입력 */
+#pass{border-radius:14px; padding:0; max-width:92vw;}
+.passbox{background:#fff; padding:24px 24px 20px; width:320px; max-width:92vw;}
+.passbox h3{margin:0 0 6px; font-size:17px;}
+.passbox p{margin:0 0 14px; font-size:13.5px; color:var(--mute); line-height:1.6;}
+.passbox input{width:100%; padding:10px 12px; border:1px solid var(--line);
+  border-radius:8px; font:inherit; font-size:15px;}
+.passbox input:focus{outline:2px solid var(--teal); outline-offset:-1px;}
+.passrow{display:flex; justify-content:flex-end; margin-top:14px;}
+.passbox button{background:var(--teal); border:none; color:#fff; font:inherit;
+  font-weight:700; font-size:14px; padding:9px 20px; border-radius:8px; cursor:pointer;}
+
+/* 진행 상황 */
+.person-head .progress{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 0;
+  font-size:13px;color:var(--muted)}
+.person-head .progress span{display:inline-flex;align-items:center;gap:5px}
+.person-head .progress span::before{content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--line)}
+.person-head .progress span.ok::before{background:#2f9e68}
+.person-head .jump{margin-top:12px;font:inherit;font-size:13px;cursor:pointer;
+  background:none;border:1px solid var(--line);border-radius:999px;
+  padding:5px 12px;color:var(--muted)}
+.person-head .jump:hover{border-color:var(--ink);color:var(--ink)}
+/* 이름 옆 숫자 = 그분께 남기신 피드백 개수 */
+nav button .dot{min-width:18px; height:18px; padding:0 5px; margin-left:7px;
+  border-radius:999px; background:var(--teal); color:#fff;
+  font-size:11px; font-weight:700; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center;}
+nav button[aria-current="true"] .dot{background:#fff; color:var(--teal-d);}
+/* 40기는 연한 연두로 구분한다 */
+nav button.c40[aria-current="true"]{background:var(--lime); border-color:var(--lime);}
+nav button.c40[aria-current="true"] .dot{color:var(--lime-d);}
+
+/* 키 메시지가 없는 쪽(표지·목차·간지·E.O.D)은 번호 없이 제목만 */
+.slide-no span.plain{color:var(--teal-d); font-weight:700;}
+
+/* 총평을 아직 안 쓰셨을 때는 아무것도 보이지 않게 */
+.person-head .progress span.hide{display:none;}
+/* 저장 버튼 */
+.fb .row button.primary{
+  border-color:var(--teal); background:var(--teal); color:#fff; font-weight:700;
+}
+.fb .row button.primary:hover{border-color:var(--teal-d); background:var(--teal-d); color:#fff;}
+.fb .row button:disabled{opacity:.42; cursor:default;}
+.fb .row button.primary:disabled:hover{border-color:var(--teal); background:var(--teal); color:#fff;}
+.fb .row .saved{margin-right:auto;}
