@@ -33,7 +33,8 @@
   /* ── 저장소 ─────────────────────────────────────────── */
   const localRead  = () => { try { return JSON.parse(localStorage.getItem(LOCAL)) || {}; }
                              catch { return {}; } };
-  const localWrite = () => localStorage.setItem(LOCAL, JSON.stringify(store));
+  const localWrite = () => { try { localStorage.setItem(LOCAL, JSON.stringify(store)); }
+                             catch {} };
 
   // 서버에서 새로 받은 내용 위에, 아직 전송 중인 내용을 다시 덮는다
   function overlay() {
@@ -51,6 +52,7 @@
     if (!j.ok) throw new Error(j.error || "load_failed");
     store = j.data || {};
     overlay();
+    localWrite();                    // 이 브라우저에도 사본을 남긴다
   }
 
   async function save(pid, key, text, remove) {
@@ -72,6 +74,7 @@
     if (!j.ok) throw new Error(j.error || "save_failed");
     store = j.data || {};
     overlay();
+    localWrite();                    // 이 브라우저에도 사본을 남긴다
   }
 
   /* ── 상태 표시 ──────────────────────────────────────── */
@@ -307,7 +310,12 @@
   (async () => {
     status("불러오는 중…", true);
     try { await load(); status(""); }
-    catch { status("불러오기 실패 — 새로고침해 주세요", true); store = {}; }
+    catch {
+      store = localRead();           // 연결이 안 되면 이 브라우저의 사본으로 보여 준다
+      status(Object.keys(store).length
+             ? "연결이 불안정합니다 — 저장된 사본을 보여 드립니다. 새로고침해 주세요"
+             : "불러오기 실패 — 새로고침해 주세요", true);
+    }
     renderNav(); renderPerson();
     if (MODE === "admin" && !pass) askPass();
     if (MODE === "view" && API) setInterval(async () => {
