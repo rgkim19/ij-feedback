@@ -291,7 +291,7 @@ window.PEOPLE = [
     "n": 3,
     "k": null,
     "img": "slides/jihyun/s-03.png",
-    "title": "01. 성장현상포착",
+    "title": "01. 성장 현상 포착",
     "paras": []
    },
    {
@@ -320,7 +320,7 @@ window.PEOPLE = [
     "n": 6,
     "k": null,
     "img": "slides/jihyun/s-06.png",
-    "title": "02. 성장동인구조화",
+    "title": "02. 성장 동인 구조화",
     "paras": []
    },
    {
@@ -372,7 +372,7 @@ window.PEOPLE = [
     "n": 11,
     "k": null,
     "img": "slides/jihyun/s-11.png",
-    "title": "03. 성장동인지속가능성검증",
+    "title": "03. 성장 동인 지속 가능성 검증",
     "paras": []
    },
    {
